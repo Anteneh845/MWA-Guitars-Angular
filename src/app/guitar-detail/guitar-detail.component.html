@@ -1,0 +1,17 @@
+<div style="background-image: url('assets/images/4.jpg'); height: 25vw;background-repeat: no-repeat; width: 100%; background-position: center; background-size: cover"></div>
+
+<div class="container">
+  <h1> {{guitar.brand}}</h1>
+  <p> {{guitar.description}}</p>
+  <ul>
+    <li> Guitar type :<b> {{guitar.type}} </b></li>
+    <li> String type: <b>{{guitar.stringType}} </b></li>
+    <li> Year : <b> {{guitar.year}} </b></li>
+    <li> Full description : <a href="{{guitar.link}}"> Click here </a></li>
+    <li> Date Added : <b> {{guitar.createdOn | date}} </b></li>
+  </ul>
+
+  <button *ngIf="isLoggedIn()" (click)="deleteGuitar(guitar._id)"
+          class="btn-danger"> Delete Guitar
+  </button>
+</div>

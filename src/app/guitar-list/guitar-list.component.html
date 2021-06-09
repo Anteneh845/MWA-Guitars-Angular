@@ -1,0 +1,16 @@
+<div>
+  <div style="background-image: url('assets/images/4.jpg'); height: 25vw;background-repeat: no-repeat; width: 100%; background-position: center; background-size: cover"></div>
+  <br/>
+  <div class="container">
+    <h2> Guitars </h2>
+    <div class="row">
+      <div class=" col-xxl-2 col-xl-3 col-lg-3 col-md-6 col-sm mt-2" *ngFor="let guitar of guitars">
+        <guitar-card [guitar]="guitar"></guitar-card>
+      </div>
+    </div>
+    <button  (click)="previousPage()" class="btn-primary">
+      Previous
+    </button>
+    <button (click)="nextPage()" class="btn-primary"> Next</button>
+  </div>
+</div>

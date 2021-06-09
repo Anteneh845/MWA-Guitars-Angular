@@ -1,0 +1,16 @@
+<div class="card" style="width: 18rem; margin: 20px;">
+  <img *ngIf="guitar.type == 'Acoustic'" src="{{acousticImageUrl}}" class="card-img-top" alt="{{guitar.brand}}">
+  <img *ngIf="guitar.type == 'Electric'" src="{{electricImageUrl}}" class="card-img-top" alt="{{guitar.brand}}">
+  <img *ngIf="guitar.type == 'Classical'" src="{{classicalImageUrl}}" class="card-img-top" alt="{{guitar.brand}}">
+  <div class="card-body">
+    <a [routerLink]="['guitars',guitar._id]" class="text-decoration-none text-white">
+      <h5 class="card-title">
+        {{guitar.brand}} -
+        <span class="font-monospace"> {{guitar.year}} </span>
+      </h5>
+    </a>
+    <span class="star-color" *ngFor="let star of  [0,1,2,3]"> &#9733;</span>
+    <div class="text-muted"> {{guitar.description | charLimit:70 }}...</div>
+    <div class="text-muted"> {{guitar.createdOn | date}}</div>
+  </div>
+</div>
