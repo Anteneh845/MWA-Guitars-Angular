@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {Guitar} from "../guitar.model";
 import {GuitarService} from "../guitar.service";
-import {ActivatedRoute} from "@angular/router";
+import {ActivatedRoute, Router} from "@angular/router";
 
 @Component({
   selector: 'app-guitar-detail',
@@ -11,7 +11,7 @@ import {ActivatedRoute} from "@angular/router";
 export class GuitarDetailComponent implements OnInit {
   guitar!: Guitar;
 
-  constructor(private guitarService: GuitarService, private route: ActivatedRoute) {
+  constructor(private guitarService: GuitarService, private route: ActivatedRoute,private  router:Router) {
   }
 
   ngOnInit(): void {
@@ -24,9 +24,17 @@ export class GuitarDetailComponent implements OnInit {
       .subscribe(guitar => this.guitar = guitar);
   }
   isLoggedIn(){
-    return false;
+    return true;
   }
+
   deleteGuitar(guitarId:String){
-    console.log(guitarId)
+    this.guitarService.deleteGuitarDetail(guitarId as string)
+      .subscribe(()=>this.router.navigate(['']))
   }
+
+  editGuitar(guitarId:String){
+    console.log(guitarId)
+    this.router.navigate(['guitars',guitarId,'edit'])
+  }
+
 }

@@ -1,4 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
+import {UserAuthModel} from "../user.model";
+import {UserService} from "../user.service";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-login',
@@ -6,14 +9,18 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./login.component.scss']
 })
 export class LoginComponent implements OnInit {
-  successMessage!:string;
-  errorMessage!:string;
-  constructor() { }
+  successMessage!: string;
+  errorMessage!: string;
+
+  constructor(private userService: UserService, private router: Router) {
+  }
 
   ngOnInit(): void {
   }
 
-  loginHandler(){
 
+  loginHandler(user: UserAuthModel) {
+    this.userService.authenticateUser(user)
+      .subscribe(() => this.router.navigate(['']))
   }
 }

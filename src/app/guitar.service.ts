@@ -11,7 +11,7 @@ export class GuitarService {
   constructor(private httpClient: HttpClient) {
   }
 
-  getGuitarList(query:string): Observable<Guitar[]> {
+  getGuitarList(query: string): Observable<Guitar[]> {
     return this.httpClient.get<Guitar[]>(`/api/guitars${query}`);
   }
 
@@ -23,8 +23,12 @@ export class GuitarService {
     return this.httpClient.delete(`/api/guitars/${guitarId}`)
   }
 
-  updateGuitar(guitarId: string, guitar: Guitar) {
-    return this.httpClient.put(`/api/guitars/${guitarId}`, guitar)
+  addGuitar(guitar: Guitar) {
+    return this.httpClient.post(`/api/guitars/`, guitar)
+  }
+
+  updateGuitar(guitar: Guitar) {
+    return this.httpClient.put(`/api/guitars/${guitar._id}`, guitar)
   }
 
 }

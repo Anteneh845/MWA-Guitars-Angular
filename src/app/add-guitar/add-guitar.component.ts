@@ -1,5 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {Guitar} from "../guitar.model";
+import {GuitarService} from "../guitar.service";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-add-guitar',
@@ -9,17 +11,20 @@ import {Guitar} from "../guitar.model";
 export class AddGuitarComponent implements OnInit {
   guitar!: Guitar;
 
-  constructor() {
+  constructor(private guitarService: GuitarService, private route: Router) {
   }
 
   ngOnInit(): void {
   }
 
-  addGuitarHandler() {
-
+  addGuitarHandler(guitar: Guitar) {
+    this.guitarService
+      .addGuitar(guitar)
+      .subscribe(() => this.route.navigate(["guitars"]))
+    console.log(guitar)
   }
 
   cancelHandler() {
-
+    this.route.navigate([""])
   }
 }

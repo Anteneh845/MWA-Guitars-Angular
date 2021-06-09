@@ -13,6 +13,7 @@ import { AddGuitarComponent } from './add-guitar/add-guitar.component';
 import {FormsModule} from "@angular/forms";
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
+import { EditGuitarComponent } from './edit-guitar/edit-guitar.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,8 @@ import { RegisterComponent } from './register/register.component';
     NavBarComponent,
     AddGuitarComponent,
     LoginComponent,
-    RegisterComponent
+    RegisterComponent,
+    EditGuitarComponent
   ],
   imports: [
     BrowserModule,

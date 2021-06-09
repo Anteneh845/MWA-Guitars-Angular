@@ -1,4 +1,4 @@
-<form ngForm="form" class="bg-dark p-4 w-25 m-auto mt-5" (ngSubmit)="registerHandler()">
+<form ngForm="form" class="bg-dark p-4 w-25 m-auto mt-5" (ngSubmit)="registerHandler(form.value)" #form="ngForm">
   <h1>
     Register
   </h1>
@@ -19,23 +19,23 @@
   </div>
   <div class="form-group mt-3">
     <label> Last name </label>
-    <input type="text" class="form-control" ngModel="user.lastName" #lastNameControl="ngModel" maxlength="20"/>
+    <input type="text" class="form-control" name="lastName" ngModel #lastNameControl="ngModel" maxlength="20"/>
     <div *ngIf="lastNameControl.dirty && lastNameControl.invalid">
       Last name length must not exceed 20 characters
     </div>
   </div>
   <div class="form-group mt-3">
     <label> Email </label>
-    <input type="email" class="form-control" ngModel="user.email" required/>
+    <input type="email" class="form-control" name="email" ngModel required/>
   </div>
   <div class="form-group mt-3">
     <label> Password </label>
-    <input type="password" class="form-control" minlength="8" ngModel="user.password" required #passwordControl="ngModel"/>
+    <input type="password" class="form-control" minlength="8"  name="password" ngModel required #passwordControl="ngModel"/>
     <div *ngIf="passwordControl.dirty && passwordControl.invalid"> Password length must be minimum of 8 characters</div>
   </div>
   <div class="form-group mt-3 ">
     <label> Confirm Password </label>
-    <input type="password" class="form-control" minlength="8" ngModel="user.confirmPassword"
+    <input type="password" class="form-control" minlength="8" name="confirmPassword" ngModel
            required #confirmPasswordControl="ngModel"/>
     <div *ngIf="confirmPasswordControl.dirty && confirmPasswordControl.invalid"> Password length must be minimum of 8
       characters

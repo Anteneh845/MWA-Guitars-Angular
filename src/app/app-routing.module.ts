@@ -5,6 +5,7 @@ import {GuitarDetailComponent} from "./guitar-detail/guitar-detail.component";
 import {AddGuitarComponent} from "./add-guitar/add-guitar.component";
 import {RegisterComponent} from "./register/register.component";
 import {LoginComponent} from "./login/login.component";
+import {EditGuitarComponent} from "./edit-guitar/edit-guitar.component";
 
 export const routes: Routes = [
   {
@@ -33,6 +34,11 @@ export const routes: Routes = [
       {
         path: ":guitarId",
         component: GuitarDetailComponent,
+        pathMatch: 'full'
+      },
+      {
+        path: ":guitarId/edit",
+        component: EditGuitarComponent,
         pathMatch: 'full'
       }
     ]

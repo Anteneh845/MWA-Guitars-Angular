@@ -11,6 +11,9 @@
     <li> Date Added : <b> {{guitar.createdOn | date}} </b></li>
   </ul>
 
+  <button *ngIf="isLoggedIn()" (click)="editGuitar(guitar._id)"
+          class="btn-primary m-2"> Edit Guitar
+  </button>&emsp;
   <button *ngIf="isLoggedIn()" (click)="deleteGuitar(guitar._id)"
           class="btn-danger"> Delete Guitar
   </button>
