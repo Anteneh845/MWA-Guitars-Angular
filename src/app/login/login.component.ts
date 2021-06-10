@@ -1,7 +1,8 @@
 import {Component, OnInit} from '@angular/core';
-import {UserAuthModel} from "../user.model";
+import {UserAuthModel, UserAuthResponse} from "../user.model";
 import {UserService} from "../user.service";
 import {Router} from "@angular/router";
+import {AuthenticationService} from "../authentication.service";
 
 @Component({
   selector: 'app-login',
@@ -12,7 +13,7 @@ export class LoginComponent implements OnInit {
   successMessage!: string;
   errorMessage!: string;
 
-  constructor(private userService: UserService, private router: Router) {
+  constructor(private userService: UserService, private authenticationService: AuthenticationService, private router: Router) {
   }
 
   ngOnInit(): void {
@@ -21,6 +22,10 @@ export class LoginComponent implements OnInit {
 
   loginHandler(user: UserAuthModel) {
     this.userService.authenticateUser(user)
-      .subscribe(() => this.router.navigate(['']))
+      .subscribe(user  => {
+          this.authenticationService.saveToken((user as UserAuthResponse).token)
+          this.router.navigate([''])
+        },
+        err => this.errorMessage = err.error)
   }
 }

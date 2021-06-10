@@ -6,6 +6,7 @@ import {AddGuitarComponent} from "./add-guitar/add-guitar.component";
 import {RegisterComponent} from "./register/register.component";
 import {LoginComponent} from "./login/login.component";
 import {EditGuitarComponent} from "./edit-guitar/edit-guitar.component";
+import {UserGuard} from "./user.guard";
 
 export const routes: Routes = [
   {
@@ -29,7 +30,8 @@ export const routes: Routes = [
       },
       {
         path: 'new',
-        component: AddGuitarComponent
+        component: AddGuitarComponent,
+        canActivate: [UserGuard]
       },
       {
         path: ":guitarId",
@@ -39,7 +41,8 @@ export const routes: Routes = [
       {
         path: ":guitarId/edit",
         component: EditGuitarComponent,
-        pathMatch: 'full'
+        pathMatch: 'full',
+        canActivate: [UserGuard]
       }
     ]
   },

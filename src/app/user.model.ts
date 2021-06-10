@@ -10,3 +10,9 @@ export interface UserAuthModel {
   email: string
   password: string
 }
+
+export interface UserAuthResponse{
+  fullName:string
+  lastName:string
+  token:string
+}

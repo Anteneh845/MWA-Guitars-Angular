@@ -15,6 +15,6 @@ export class UserService {
   }
 
   authenticateUser(userAuthModel: UserAuthModel) {
-    return this.httpClient.post(`/api/users`, userAuthModel)
+    return this.httpClient.post(`/api/auth`, userAuthModel)
   }
 }

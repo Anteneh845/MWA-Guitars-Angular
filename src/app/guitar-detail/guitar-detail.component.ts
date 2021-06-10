@@ -2,6 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {Guitar} from "../guitar.model";
 import {GuitarService} from "../guitar.service";
 import {ActivatedRoute, Router} from "@angular/router";
+import {AuthenticationService} from "../authentication.service";
 
 @Component({
   selector: 'app-guitar-detail',
@@ -11,7 +12,7 @@ import {ActivatedRoute, Router} from "@angular/router";
 export class GuitarDetailComponent implements OnInit {
   guitar!: Guitar;
 
-  constructor(private guitarService: GuitarService, private route: ActivatedRoute,private  router:Router) {
+  constructor(private guitarService: GuitarService, private authenticationService:AuthenticationService,private route: ActivatedRoute,private  router:Router) {
   }
 
   ngOnInit(): void {
@@ -24,7 +25,7 @@ export class GuitarDetailComponent implements OnInit {
       .subscribe(guitar => this.guitar = guitar);
   }
   isLoggedIn(){
-    return true;
+    return this.authenticationService.isLoggedIn();
   }
 
   deleteGuitar(guitarId:String){
